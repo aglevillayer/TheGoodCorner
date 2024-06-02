@@ -1,0 +1,40 @@
+#### /// Show all the ads
+GET http://localhost:5001/ormTypeRelation/
+### // Show the add which id is 1
+GET http://localhost:5001/ormTypeRelation/0
+### // Show the ads in the "Other" Category
+GET http://localhost:5001/ormTypeRelation/category/autre
+### // Show rage price of ads in Lyon
+GET http://localhost:5001/ormTypeRelation/avgPrice/Lyon
+
+### // Add an ad 
+POST http://localhost:5001/ormTypeRelation/
+Content-Type: application/json
+
+{
+  "title": "Chambre d'ami.es",
+  "description": "Belle chambre qui fait également bureau pour les proprio",
+  "owner":"Aurélien Leygues",
+  "price":20,
+  "picture":"ça vaut le détour",
+  "location":"Villeurbanne",
+  "category": "appartement",
+  "tags": {"name":"location"}
+}
+### // Update the add which id is 1
+PUT http://localhost:5001/ormTypeRelation/1
+Content-Type: application/json
+
+{
+  //"title": "Chambre d'ami.e.s",
+  "description": "Location d'une belle chambre qui fait également bureau pour les proprios",
+  "owner":"Aurélien Leygues",
+  //"price":0,
+  "picture":"ça vaut le détour",
+  //"location":"Villeurbanne"
+}
+### // Delete the ad which id is 1
+DELETE http://localhost:5001/ormTypeRelation/1
+
+### // Delete the ads which price is > 40€
+DELETE http://localhost:5001/ormTypeRelation/price/40

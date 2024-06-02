@@ -1,0 +1,30 @@
+//Afficher les annonces de la catégorie “vêtement” (=2)
+GET http://localhost:3000/adsCategory/category/vêtement
+
+###//Afficher les annonces des catégories “vêtement” et “voiture”
+POST http://localhost:3000/adsCategory/category/
+Content-Content-Type: application/json
+
+{
+    "categoriesNames":["vêtement","category2"]
+}
+###// Afficher le prix moyen des annonces de la catégorie “autre”
+GET http://localhost:3000/adsCategory/avgPrice/vêtement
+
+### //Afficher les annonces des catégories dont le nom commence par un “v”
+GET http://localhost:3000/adsCategory/categoryLetter/v
+
+###// Créer un endpoint qui permet d’ajouter une annonce et de créer sa catégorie à la volée, tout cela dans une transaction
+POST http://localhost:3000/adsCategory/
+Content-Type: application/json
+
+{
+  "title": "Gourde",
+  "description": "Gourde 1L",
+  "owner":"moi",
+  "price":10,
+  "picture":"ok",
+  "location":"Lyon",
+  "createdAt":"2024-01-01 00:00:00",
+  "category_id":3
+}

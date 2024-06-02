@@ -1,0 +1,31 @@
+#### /// Show all the ads
+GET http://localhost:5001/ormType/
+### // Show the add which id is 1
+GET http://localhost:5001/ormType/0
+### // Add an ad 
+POST http://localhost:5001/ormType/
+Content-Type: application/json
+
+{
+  "title": "Chambre d'ami.e.s",
+  "description": "Belle chambre qui fait également bureau pour les proprio",
+  "owner":"Aurélien Leygues",
+  "price":0,
+  "picture":"ça vaut le détour",
+  "location":"Villeurbanne",
+  "category": "appartement"
+}
+### // Update the add which id is 1
+PUT http://localhost:5001/ormType/1
+Content-Type: application/json
+
+{
+  //"title": "Chambre d'ami.e.s",
+  "description": "Location d'une belle chambre qui fait également bureau pour les proprios",
+  "owner":"Aurélien Leygues",
+  //"price":0,
+  "picture":"ça vaut le détour",
+  //"location":"Villeurbanne"
+}
+### // Delete the add which id is 1
+DELETE http://localhost:5001/ormType/1

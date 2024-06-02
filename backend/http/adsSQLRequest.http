@@ -1,0 +1,31 @@
+//----------Jour 3 - matinée introduction à SQL----------//
+//Afficher toutes les annonces
+GET http://localhost:3000/adsSQL/
+###// Afficher toutes les annonces de Bordeaux
+GET http://localhost:3000/adsSQL/location/Bordeaux
+###// Supprimer les annonces avec un prix supérieur à 40€
+DELETE http://localhost:3000/adsSQL/price/40
+###// Mettre à jour les annonces du 1er Septembre avec un prix à 0€
+PUT  http://localhost:3000/adsSQL/price
+Content-Type: application/json
+
+{
+  "createdAt":"2002-01-01 00:00:00",
+  "price":0
+}
+###// Afficher la moyenne des prix des annonces de la ville de Paris
+GET http://localhost:3000/adsSQL/avgPrice/Paris
+###// Créer une nouvelle annonce
+POST http://localhost:3000/adsSQL/
+Content-Type: application/json
+
+{
+    "title": "Nintendo Switch",
+    "description": "Version Splatoon",
+    "owner": "Bibi",
+    "price": 300,
+    "picture": "https://www.velo.com/velo.jpg",
+    "location": "Lyon"
+}
+###// Bonus1: Afficher la moyenne des prix des annonces par ville
+GET http://localhost:3000/adsSQL/avgPrice/

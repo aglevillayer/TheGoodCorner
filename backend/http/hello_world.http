@@ -1,0 +1,79 @@
+GET http://localhost:3000/
+### // permet de séparer les requêtes et lui permet de savoir qu'il y a plusieurs requêtes
+
+POST http://localhost:3000/ad
+Content-Type: application/json
+
+{
+  "title": "Gourde",
+  "description": "Gourde 1L",
+  "owner":"moi",
+  "price":10,
+  "picture":"ok",
+  "location":"Lyon",
+  "createdAt":"2024-01-01 00:00:00",
+  "category_id":3
+}
+
+
+###
+GET http://localhost:3000/ads/2
+ 
+###
+POST http://localhost:3000/ads
+Content-Type: application/json
+
+{
+    "id": 4,
+    "title": "Bike to sell",
+    "description":
+      "My roller is yellow, working fine. I'm selling it because I've got a new one",
+    "owner": "roller.seller@gmail.com",
+    "price": 50,
+    "picture":
+      "https://www.automobile-magazine.fr/asset/cms/34973/config/28294/apres-plusieurs-prototypes-la-bollore-bluecar-a-fini-par-devoiler-sa-version-definitive.jpg",
+    "location": "Lyon",
+    "createdAt": "2023-28-05T10:14:15.922Z"
+}
+
+###
+GET http://localhost:3000/movies/count
+
+###
+GET http://localhost:3000/movies/totalBudget
+
+###
+GET http://localhost:3000/movies/?minYear=1994
+###
+GET http://localhost:3000/movies/?requestedTime=10
+
+
+###
+//Attention ici le s compte ! on ne supprime pas la table mais juste l'objet ad
+//Attention, le saut de ligne entre content-type et {} est très important !!! sinon on a une erreur header
+DELETE http://localhost:3000/ad
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+###
+PUT http://localhost:3000/ad
+Content-Type: application/json
+
+{
+  "id": 1,
+  "newAd": {
+    "id": 1,
+    "title": "Test",
+    "description":
+      "My roller is yellow, working fine. I'm selling it because I've got a new one",
+    "owner": "roller.seller@gmail.com",
+    "price": 50,
+    "picture":
+      "https://www.automobile-magazine.fr/asset/cms/34973/config/28294/apres-plusieurs-prototypes-la-bollore-bluecar-a-fini-par-devoiler-sa-version-definitive.jpg",
+    "location": "Lyon",
+    "createdAt": "2023-28-05T10:14:15.922Z"
+  }
+}
