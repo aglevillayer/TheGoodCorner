@@ -3,7 +3,7 @@ import fs from "node:fs";
 
 // On charge le movies.csv
 const csvContent: string = fs.readFileSync(
-  "/Users/levil/Documents/Cours/Wild Code School/Cours/the-good-corner/backend/src/assets/movies.csv",
+  "/Users/levil/Documents/Cours/Wild Code School/Cours/theGoodCorner/backend/src/assets/movies.csv",
   {
     encoding: "utf-8",
   }
