@@ -1,4 +1,4 @@
-import styles from "./adCard.module.css"; // Qu'il ait pour nom adCard.module.css permet de relier directement le module à adCard
+import styles from "./AdCard.module.css"; // Qu'il ait pour nom adCard.module.css permet de relier directement le module à adCard
 
 export type AdCardProps = {
   title: string;
@@ -7,7 +7,7 @@ export type AdCardProps = {
   link: string;
 };
 
-export const AdCard = ({ title, imgUrl, price, link }: AdCardProps) => {
+export default function AdCard({ title, imgUrl, price, link }: AdCardProps) {
   return (
     <div className={styles["ad-card-container"]}>
       <a className={styles["ad-card-link"]} href={link}>
@@ -19,4 +19,4 @@ export const AdCard = ({ title, imgUrl, price, link }: AdCardProps) => {
       </a>
     </div>
   );
-};
+}

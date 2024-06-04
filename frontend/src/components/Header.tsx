@@ -1,4 +1,4 @@
-export const Header = () => {
+export default function Header() {
   return (
     <header className="header">
       <div className="main-menu">
@@ -34,51 +34,51 @@ export const Header = () => {
       <nav className="categories-navigation">
         <a href="" className="category-navigation-link">
           Ameublement
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
           Électroménager
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
           Photographie
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
           Informatique
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
-          Téléphonie{" "}
-        </a>{" "}
+          Téléphonie
+        </a>
         •
         <a href="" className="category-navigation-link">
           Vélos
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
           Véhicules
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
           Sport
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
           Habillement
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
           Bébé
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
           Outillage
-        </a>{" "}
+        </a>
         •
         <a href="" className="category-navigation-link">
-          Services{" "}
-        </a>{" "}
+          Services
+        </a>
         •
         <a href="" className="category-navigation-link">
           Vacances
@@ -86,4 +86,4 @@ export const Header = () => {
       </nav>
     </header>
   );
-};
+}

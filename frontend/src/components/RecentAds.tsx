@@ -1,6 +1,9 @@
-import { AdCardProps, AdCard } from "./AdCard";
+import { AdCardProps } from "./AdCard";
+import AdCard from "./AdCard";
+import { useState } from "react";
 
-export const RecentAds = () => {
+export default function RecentAds() {
+  const [total, setTotal] = useState(0);
   const ads: AdCardProps[] = [
     {
       imgUrl: "/images/table.webp",
@@ -42,17 +45,27 @@ export const RecentAds = () => {
   return (
     <>
       <h2>Annonces récentes</h2>
+      <p> Prix total : {total}€</p>
       <section className="recent-ads">
         {ads.map((ad) => (
-          <AdCard
-            imgUrl={ad.imgUrl}
-            link={ad.link}
-            price={ad.price}
-            title={ad.title}
-            key={ad.title}
-          />
+          <div key={ad.title}>
+            <AdCard
+              imgUrl={ad.imgUrl}
+              link={ad.link}
+              price={ad.price}
+              title={ad.title}
+            />
+            <button
+              className="button"
+              onClick={() => {
+                setTotal(total + ad.price);
+              }}
+            >
+              Add price to total
+            </button>
+          </div>
         ))}
       </section>
     </>
   );
-};
+}
