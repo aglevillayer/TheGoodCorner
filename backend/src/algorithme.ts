@@ -1,5 +1,5 @@
 // // Lien des algo : https://gist.github.com/karimmakhloufi/ad4a44f39260ab66907e614e6cfd735c
-
+/* ----------------- Niveau 1 ----------------- */
 // //Algorithme 1 : Capitalization and Mutability
 // function capitalizeWord(word) {
 //   word = word[0].toUpperCase() + word.slice(1);
@@ -83,14 +83,54 @@
 // console.log(likes(["PEter", "Alice", "Roger"]));
 
 // Algorithme 10 : Evens times last
-export function evenLast(numbers: number[]): number {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    if (i % 2 == 0) {
-      sum += numbers[i];
-    }
-    return sum * numbers[numbers.length - 1];
-  }
-  return 0;
-}
-console.log(evenLast([]));
+// export function evenLast(numbers: number[]): number {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (i % 2 == 0) {
+//       sum += numbers[i];
+//     }
+//     if (i == numbers.length - 1) {
+//       return sum * numbers[i];
+//     }
+//   }
+//   return 0;
+// }
+// console.log(evenLast([2, 3, 4, 5]));
+
+// Algorithme 11 : Small enough? - Beginner
+// export function smallEnough(a: number[], limit: number): boolean {
+//   let boolean: boolean = true;
+//   a.forEach((number) => {
+//     if (number > limit) {
+//       boolean = false;
+//     }
+//     return boolean;
+//   });
+//   return boolean;
+// }
+// console.log(smallEnough([101, 45, 75, 105, 99, 107], 107));
+// export function smallEnough(a: number[], limit: number): boolean {
+//   //return a.every(x => x <= limit)
+//   return !a.some((number) => {
+//     number > limit;
+//   }); // marche pas mais devrait y avoir une solution avec some
+// }
+// console.log(smallEnough([101, 45, 75, 1, 99, 104], 107));
+
+// Algorithme 12 : Get the mean of an array
+// export function getAverage(marks: number[]): number {
+//   //TODO : calculate the downwar rounded average of the marks array
+//   let sum: number = 0;
+//   marks.map((mark) => {
+//     sum += mark;
+//   });
+//   if (sum / marks.length - Math.round(sum / marks.length) >= 0) {
+//     return Math.round(sum / marks.length);
+//   } else {
+//     return Math.round(sum / marks.length) - 1;
+//   }
+// }
+// console.log(getAverage([2, 2, 2, 2]));
+
+/* ----------------- Niveau 2 ----------------- */
+//Algorithme 13 : Currying functions: multiply all elements in an array

@@ -1,9 +1,17 @@
 import { AdCardProps } from "./AdCard";
 import AdCard from "./AdCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RecentAds() {
-  const [total, setTotal] = useState(0);
+  const [totalPrice, setTotalPrice] = useState<number>();
+  useEffect(() => {
+    console.log("Set the total price to 0€");
+    setTotalPrice(0);
+  }, []);
+  const everyRender = () => {
+    console.log("This will be executed after every render");
+  };
+
   const ads: AdCardProps[] = [
     {
       imgUrl: "/images/table.webp",
@@ -45,7 +53,7 @@ export default function RecentAds() {
   return (
     <>
       <h2>Annonces récentes</h2>
-      <p> Prix total : {total}€</p>
+      <p> Prix total : {totalPrice}€</p>
       <section className="recent-ads">
         {ads.map((ad) => (
           <div key={ad.title}>
@@ -58,7 +66,7 @@ export default function RecentAds() {
             <button
               className="button"
               onClick={() => {
-                setTotal(total + ad.price);
+                setTotalPrice(totalPrice + ad.price);
               }}
             >
               Add price to total
