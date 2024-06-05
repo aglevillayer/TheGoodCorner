@@ -1,3 +1,4 @@
+import styles from "./recentAds.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import AdCard, { AdCardProps } from "./AdCard";
@@ -25,7 +26,7 @@ export default function RecentAds() {
   }
   // UseEffect Definition
   useEffect(() => {
-    console.log("Initialisation of total price to 0€");
+    console.log("Initialization of total price to 0€");
     initAds();
     setTotalPrice(0);
   }, []);
@@ -37,7 +38,16 @@ export default function RecentAds() {
   return (
     <>
       <h2>Annonces récentes</h2>
-      <p> Prix total : {totalPrice}€</p>
+      <div className={styles["total-price"]}>
+        <div> Total Price : {totalPrice}€</div>
+        <button
+          onClick={() => {
+            setTotalPrice(0);
+          }}
+        >
+          Reset cart
+        </button>
+      </div>
       <section className="recent-ads">
         {ads.map((ad) => (
           <div key={ad.id}>

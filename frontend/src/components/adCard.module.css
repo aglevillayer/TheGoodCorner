@@ -1,27 +1,30 @@
-.ad-card-container {
+.container {
   border-radius: 8px;
   border: 1px solid lightgray;
   color: inherit;
   background-color: white;
 }
-
-.ad-card-link {
+.category {
+  padding: 12px;
+  font-size: 18px;
+}
+.link {
   text-decoration: inherit;
   color: inherit;
 }
 
-.ad-card-image {
+.image {
   width: 100%;
   border-radius: 8px;
 }
 
-.ad-card-text {
+.text {
   padding: 12px;
   font-size: 18px;
   display: flex;
   justify-content: space-between;
 }
 
-.ad-card-title {
+.title {
   font-weight: bold;
 }

@@ -1,7 +1,7 @@
 import styles from "./AdCard.module.css"; // Qu'il ait pour nom adCard.module.css permet de relier directement le module à adCard
 
 // Interface et pas type ? Pourquoi ?
-export type AdCardProps = {
+export interface AdCardProps {
   id: number;
   title: string;
   description?: string;
@@ -13,7 +13,7 @@ export type AdCardProps = {
   category?;
   tags?;
   link: string;
-};
+}
 
 export default function AdCard({
   id,
@@ -26,13 +26,16 @@ export default function AdCard({
   category,
 }: AdCardProps) {
   return (
-    <div className={styles["ad-card-container"]}>
-      <div className="ad-card-category">category : {category.name} </div>
-      <a className={styles["ad-card-link"]} href={link}>
-        <img className={styles["ad-card-image"]} src={picture} />
-        <div className={styles["ad-card-text"]}>
-          <div className={styles["ad-card-title"]}>{title}</div>
-          <div className={styles["ad-card-price"]}>{price} €</div>
+    <div className={styles.container}>
+      <div className={styles.category}> Category : {category.name} </div>
+      <a className={styles.link} href={link}>
+        <img
+          className={styles.image}
+          src={picture ?? "/images/file-question.svg"}
+        />
+        <div className={styles.text}>
+          <div className={styles.title}>{title}</div>
+          <div className={styles.price}>{price} €</div>
         </div>
       </a>
     </div>
