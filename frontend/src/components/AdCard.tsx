@@ -2,10 +2,10 @@ import styles from "./AdCard.module.css"; // Qu'il ait pour nom adCard.module.cs
 
 // Interface et pas type ? Pourquoi ?
 export interface AdCardProps {
-  id: number;
+  id?: number;
   title: string;
   description?: string;
-  owner: string;
+  owner?: string;
   price: number;
   picture?: string;
   location: string;
