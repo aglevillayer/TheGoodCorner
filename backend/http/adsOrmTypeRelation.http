@@ -1,14 +1,14 @@
 #### /// Show all the ads
-GET http://localhost:5001/ormTypeRelation/
+GET http://localhost:4000/ad
 ### // Show the add which id is 1
-GET http://localhost:5001/ormTypeRelation/0
+GET http://localhost:4000/ad/272
 ### // Show the ads in the "Other" Category
-GET http://localhost:5001/ormTypeRelation/category/autre
+GET http://localhost:4000/category/Ameublement
 ### // Show rage price of ads in Lyon
 GET http://localhost:5001/ormTypeRelation/avgPrice/Lyon
 
 ### // Add an ad 
-POST http://localhost:5001/ormTypeRelation/
+POST http://localhost:4000/ad
 Content-Type: application/json
 
 {
@@ -16,13 +16,12 @@ Content-Type: application/json
   "description": "Belle chambre qui fait également bureau pour les proprio",
   "owner":"Aurélien Leygues",
   "price":20,
-  "picture":"ça vaut le détour",
   "location":"Villeurbanne",
-  "category": "appartement",
-  "tags": {"name":"location"}
+  "category": "meuble",
+  "tags": [{"name":"0 carbon"}]
 }
 ### // Update the add which id is 1
-PUT http://localhost:5001/ormTypeRelation/1
+PUT http://localhost:4000/ad/1
 Content-Type: application/json
 
 {
@@ -34,7 +33,7 @@ Content-Type: application/json
   //"location":"Villeurbanne"
 }
 ### // Delete the ad which id is 1
-DELETE http://localhost:5001/ormTypeRelation/1
+DELETE http://localhost:4000/ad/1
 
 ### // Delete the ads which price is > 40€
-DELETE http://localhost:5001/ormTypeRelation/price/40
+DELETE http://localhost:4000/price/40

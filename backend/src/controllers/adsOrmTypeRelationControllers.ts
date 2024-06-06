@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Ad } from "../components/ad";
 import { Tag } from "../components/tag";
 import { MoreThan, In } from "typeorm";
+import { Category } from "../components/category";
 
 /* ---------------- Routes GET ---------------- */
 // Afficher toutes les annonces
@@ -29,9 +30,25 @@ const getAdsOrmTypeById = async (req: Request, res: Response): Promise<any> => {
       relations: {
         tags: true,
       },
-      where: [{ id: requestedId, owner: "Anne-Ga" }], // Attention j'ai rajouté une condition sur owner pour tester
+      where: [{ id: requestedId }],
     });
+    console.log(ad);
     res.status(200).send(ad);
+  } catch (err) {
+    console.error("Error : ", err);
+    res.status(500).send("An error occured");
+  }
+};
+
+// Afficher toutes les catégories
+const getCategoriesOrmType = async (
+  req: Request,
+  res: Response
+): Promise<any> => {
+  try {
+    console.log(`These are all the categories' ads`);
+    const categories: Category[] = await Category.find();
+    res.status(200).send(categories);
   } catch (err) {
     console.error("Error : ", err);
     res.status(500).send("An error occured");
@@ -87,12 +104,7 @@ const getAdsAveragePriceOfLocation = async (
 
 const postNewAdsOrmType = async (req: Request, res: Response): Promise<any> => {
   try {
-    if (
-      !req.body.title ||
-      !req.body.owner ||
-      !req.body.price ||
-      !req.body.location
-    ) {
+    if (!req.body.title || !req.body.price || !req.body.location) {
       res
         .status(400)
         .send("There's missing required information for created the new ad");
@@ -108,17 +120,28 @@ const postNewAdsOrmType = async (req: Request, res: Response): Promise<any> => {
     ad.createdAt = new Date();
     ad.tags = [];
 
+    // Gestion de la catégorie : récupération de l'entité category
+    if (req.body.category != null) {
+      let category = await Category.find({
+        where: { name: req.body.category },
+      });
+      console.log(category[0]);
+      if (category != null) {
+        ad.category = category[0];
+      }
+    }
+
     await ad.save();
 
     if (req.body.tags) {
-      for (const tagName of req.body.tags) {
+      for (const tagObject of req.body.tags) {
         // Vérifiez si le tag existe déjà
-        let tag = await Tag.findOne({ where: { name: tagName } });
+        let tag = await Tag.findOne({ where: { name: tagObject.name } });
 
         // Si le tag n'existe pas, créez-le
         if (!tag) {
           tag = new Tag();
-          tag.name = tagName;
+          tag.name = tagObject.name;
           await tag.save();
         }
 
@@ -231,6 +254,7 @@ const deleteAdsOrmTypePriceMoreThan40 = async (
 export {
   getAdsOrmType,
   getAdsOrmTypeById,
+  getCategoriesOrmType,
   getAdsOrmTypeByCategory,
   getAdsAveragePriceOfLocation,
   postNewAdsOrmType,

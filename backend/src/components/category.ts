@@ -9,9 +9,8 @@ import { Ad } from "./ad";
 
 @Entity()
 export class Category extends BaseEntity {
-  private static counter: number = 0;
   @PrimaryGeneratedColumn()
-  id: number = Category.counter++;
+  id?: number;
   @Column()
   name?: string = "";
   //   @Column()

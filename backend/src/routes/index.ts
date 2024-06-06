@@ -14,6 +14,6 @@ router.use("/movies", moviesRoutes);
 router.use("/adsSQL", adsSQLRoutes);
 router.use("/adsCategory", adsCategoryRoutes);
 router.use("/ormType", ormTypeRoutes);
-router.use("/OrmTypeRelation", ormTypeRelationRoutes);
+router.use("/", ormTypeRelationRoutes);
 
 export default router;

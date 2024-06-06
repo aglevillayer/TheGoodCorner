@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.formInput {
+  padding: 8px;
+  margin: 15px;
+  background-color: beige;
+}
+
+.formSubmit {
+  padding: 5px;
+  margin: 15px;
+  background-color: lightgray;
+}

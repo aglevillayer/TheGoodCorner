@@ -22,12 +22,12 @@ export default function AdCard({
   price,
   picture,
   location,
-  link,
+  link = "/ad/" + id,
   category,
 }: AdCardProps) {
   return (
     <div className={styles.container}>
-      <div className={styles.category}> Category : {category.name} </div>
+      <div className={styles.category}>Category : {category.name}</div>
       <a className={styles.link} href={link}>
         <img
           className={styles.image}

@@ -26,61 +26,61 @@ export default function Header() {
             </svg>
           </button>
         </form>
-        <a href="/post-ad" className="button link-button">
+        <a href="/ad/new" className="button link-button">
           <span className="mobile-short-label">Publier</span>
           <span className="desktop-long-label">Publier une annonce</span>
         </a>
       </div>
       <nav className="categories-navigation">
-        <a href="" className="category-navigation-link">
+        <a href="/category/Ameublement" className="category-navigation-link">
           Ameublement
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Électroménager" className="category-navigation-link">
           Électroménager
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Photographie" className="category-navigation-link">
           Photographie
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Informatique" className="category-navigation-link">
           Informatique
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Téléphonie" className="category-navigation-link">
           Téléphonie
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Vélos" className="category-navigation-link">
           Vélos
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Véhicules" className="category-navigation-link">
           Véhicules
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Sport" className="category-navigation-link">
           Sport
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Habillement" className="category-navigation-link">
           Habillement
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Bébé" className="category-navigation-link">
           Bébé
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Outillage" className="category-navigation-link">
           Outillage
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Services" className="category-navigation-link">
           Services
         </a>
         •
-        <a href="" className="category-navigation-link">
+        <a href="/category/Vacances" className="category-navigation-link">
           Vacances
         </a>
       </nav>

@@ -8,7 +8,10 @@ async function fetchAds(): Promise<AdCardProps[]> {
   // TODO : how to handle ad.link prop ?
   try {
     const { data } = await axios.get<AdCardProps[]>(BACKEND_URL + "/ad");
-    return data;
+    console.log(data);
+    return data.sort((adLeft: AdCardProps, adRight: AdCardProps) =>
+      adLeft.createdAt > adRight.createdAt ? -1 : 1
+    );
   } catch (err) {
     console.error(err, `cannot fetch ads - falling back to empty array`);
     return [];
@@ -34,11 +37,18 @@ export default function RecentAds() {
   function addPrice(price: number): void {
     setTotalPrice(totalPrice! + price);
   }
+  function retirePrice(price: number): void {
+    if (totalPrice! > price) {
+      setTotalPrice(totalPrice! - price);
+    } else {
+      setTotalPrice(0);
+    }
+  }
 
   return (
     <>
       <h2>Annonces récentes</h2>
-      <div className={styles["total-price"]}>
+      <div className={styles.totalPrice}>
         <div> Total Price : {totalPrice}€</div>
         <button
           onClick={() => {
@@ -61,9 +71,14 @@ export default function RecentAds() {
               category={ad.category}
               link={ad.link}
             />
-            <button className="button" onClick={() => addPrice(ad.price)}>
-              Add price to total
-            </button>
+            <div className={styles.totalPrice}>
+              <button className="button" onClick={() => addPrice(ad.price)}>
+                Add price to total
+              </button>
+              <button className="button" onClick={() => retirePrice(ad.price)}>
+                Retire price to total
+              </button>
+            </div>
           </div>
         ))}
       </section>
