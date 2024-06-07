@@ -1,4 +1,4 @@
-import styles from "./AdCard.module.css"; // Qu'il ait pour nom adCard.module.css permet de relier directement le module à adCard
+import styles from "../styles/AdCard.module.css";
 
 // Interface et pas type ? Pourquoi ?
 export interface AdCardProps {

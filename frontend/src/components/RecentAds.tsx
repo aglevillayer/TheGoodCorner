@@ -1,4 +1,4 @@
-import styles from "./recentAds.module.css";
+import styles from "../styles/RecentAds.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import AdCard, { AdCardProps } from "./AdCard";

@@ -25,14 +25,8 @@ const getAdsOrmType = async (req: Request, res: Response): Promise<any> => {
 const getAdsOrmTypeById = async (req: Request, res: Response): Promise<any> => {
   try {
     const requestedId = parseInt(req.params.id);
-    console.log(`These are all the ads which id is ${requestedId}`);
-    const ad = await Ad.find({
-      relations: {
-        tags: true,
-      },
-      where: [{ id: requestedId }],
-    });
-    console.log(ad);
+    console.log(`This is the ad which id is ${requestedId}`);
+    const ad = await Ad.findOneBy({ id: requestedId });
     res.status(200).send(ad);
   } catch (err) {
     console.error("Error : ", err);

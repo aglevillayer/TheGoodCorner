@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect, useState } from "react";
-import styles from "./new.module.css";
+import styles from "../../styles/new.module.css";
 
 const BACKEND_URL = "http://localhost:4000";
 type category = {
@@ -18,6 +18,8 @@ type Inputs = {
 
 export default function NewAd() {
   const [categories, setCategories] = useState<category[]>([]);
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<boolean>(false);
   useEffect(() => {
     async function fetchCategories(): Promise<category[]> {
       try {
@@ -39,12 +41,30 @@ export default function NewAd() {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  function onSubmit(data): SubmitHandler<Inputs> {
+  async function onSubmit(data): SubmitHandler<Inputs> {
     try {
-      console.log(data);
-      axios.post(BACKEND_URL + "/ad", data);
+      const response = await axios.post(BACKEND_URL + "/ad", data);
+      console.log(response);
+      if (response) {
+        if (response.status === 201) {
+          console.log("Ad has been well created");
+          setError("");
+          setSuccess(true);
+          //reset();
+        } else {
+          console.log("An error occured. Try again to post a new ad.");
+          setError(
+            "An error occured while submitting your new ad. Please try again."
+          );
+          setSuccess(false);
+        }
+      }
     } catch (err) {
       console.error(err, "Error on creating a new add");
+      setError(
+        "An error occured while submitting your new ad. Please try again."
+      );
+      setSuccess(false);
     }
   }
   console.log(errors);
@@ -99,39 +119,44 @@ export default function NewAd() {
 
     //   <button className="button">Submit</button>
     // </form>
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <input
-        className={styles.formInput}
-        placeholder="Title"
-        {...register("title", { required: true, maxLength: 80 })}
-      />
-      <input
-        className={styles.formInput}
-        placeholder="Description"
-        {...register("description")}
-      />
-      <input
-        className={styles.formInput}
-        placeholder="Price"
-        {...register("price", { required: true, maxLength: 80 })}
-      />
-      <input
-        className={styles.formInput}
-        placeholder="Location"
-        {...register("location", { required: true, maxLength: 80 })}
-      />
-      <select className={styles.formInput} {...register("category")}>
-        <option selected disabled>
-          Select Category
-        </option>
-        {categories.map((el) => (
-          <option value={el.name} key={el.id}>
-            {el.name}
+    <div className="newAdContainer">
+      <h1>Création d'une nouvelle annonce</h1>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className={styles.formInput}
+          placeholder="Title"
+          {...register("title", { required: true, maxLength: 80 })}
+        />
+        <input
+          className={styles.formInput}
+          placeholder="Description"
+          {...register("description")}
+        />
+        <input
+          className={styles.formInput}
+          placeholder="Price"
+          {...register("price", { required: true, maxLength: 80 })}
+        />
+        <input
+          className={styles.formInput}
+          placeholder="Location"
+          {...register("location", { required: true, maxLength: 80 })}
+        />
+        <select className={styles.formInput} {...register("category")}>
+          <option selected disabled>
+            Select Category
           </option>
-        ))}
-      </select>
+          {categories.map((el) => (
+            <option value={el.name} key={el.id}>
+              {el.name}
+            </option>
+          ))}
+        </select>
 
-      <input className={styles.formSubmit} type="submit" />
-    </form>
+        <input className={styles.formSubmit} type="submit" />
+        {success && <span>Your new ad has been submited</span>}
+        {error && <span>{error}</span>}
+      </form>
+    </div>
   );
 }
