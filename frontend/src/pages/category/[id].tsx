@@ -1,3 +1,4 @@
+import styles from "../../styles/AdsInCategory.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -17,7 +18,7 @@ async function fetchAds(categoryName: string): Promise<AdCardProps[]> {
   }
 }
 
-export default function AdsInCategory() {
+export default function AdsInCategoryPage() {
   const router = useRouter();
   const [ads, setAds] = useState<AdCardProps[]>([]);
 
@@ -34,7 +35,9 @@ export default function AdsInCategory() {
   useEffect(() => {}, []);
   return (
     <>
-      <section className="category-ads">
+      <h2> Annonces de la catégorie {router.query.id} </h2>
+
+      <section className={styles.AdsCategory}>
         {ads != null ? (
           ads.map((ad) => (
             <div key={ad.id}>

@@ -1,0 +1,4 @@
+.AdsCategory {
+  display: flex;
+  flex-direction: row;
+}
